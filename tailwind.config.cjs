@@ -16,6 +16,7 @@ module.exports = {
       },
       boxShadow: {
         custom: 'rgba(245, 246, 250) 0px 0px 0px 3px,  0 0 10px #f5f6fa',
+        customImg: 'rgba(245, 246, 250) 0px 0px 0px 3px,  0 0 10px #f5f6fa',
       },
       backgroundImage: theme => ({
         'steve-jobs': "url('/quote/assets/stevejobs.png')",
