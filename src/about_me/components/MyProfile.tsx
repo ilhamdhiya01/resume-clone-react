@@ -1,32 +1,25 @@
 import Button from './Button';
 import MyPhoto from './MyPhoto';
 import { useState } from 'react';
+import MyDetail from './MyDetail';
 export default function MyProfile() {
-  const [showDetail, setShowDetail] = useState({
-    profile: 'unactive',
-    aboutMe: 'hidden',
-  });
+  const [showDetail, setShowDetail] = useState(false);
   const handleShowDetail = () => {
-    setShowDetail({
-      profile: 'detail-active',
-      aboutMe: 'about-me-active',
-    });
+    setShowDetail(true);
+  };
+  const handleHideDetail = () => {
+    setShowDetail(false);
   };
   return (
-    <div className={`profile ${showDetail.profile} bg-[#18191C] max-w-[550px] w-full p-5 mt-4 ml-4`}>
-      <div className='flex justify-between'>
-        <div className='font-["Poppins"] space-y-2'>
-          <h2 className='text-xl font-medium text-white'>Ilham Dhiya Ulhaq</h2>
-          <span className='text-sm underline text-white font-light'>Frontend Enginer of Run System</span>
-          <Button onClick={handleShowDetail}>
-            Click for show more <small>&#8595;</small>
-          </Button>
-        </div>
-        <MyPhoto />
+    <div className={`${showDetail ? 'transition-all duration-[0.4s] ease-in shadow-lightBorder p-[25px] rounded-br-[65px] rounded-tl-[65px]' : 'transition-all duration-[0.4s] ease-in-out rounded-none'} bg-[#18191C] max-w-[530px] h-full w-full p-[25px] mt-4 ml-4`}>
+      <div className='font-["Poppins"] space-y-2 float-left'>
+        <h2 className='text-xl font-medium text-white'>Ilham Dhiya Ulhaq</h2>
+        <span className='text-sm underline text-white font-light'>Frontend Enginer of Run System</span>
+        {showDetail ? <Button onClick={handleHideDetail}>Hide more detail</Button> : <Button onClick={handleShowDetail}>Show more detail</Button>}
       </div>
-      <article className={`about-me ${showDetail.aboutMe}`}>
-        <p>Hello, my name is Ilham, I am from Semarang, I was born in Surabaya, May 17, 1998. I am a student at the University of Semarang who really likes the world of programming, even though I am not yet proficient in this field, I will continue to learn because I have a strong will and high consistency in learning programming. So by participating in the Awakening Academy program, I hope that I can hone my skills in the programming world.</p>
-      </article>
+      <MyPhoto propsState={showDetail} />
+      <div className='clear-both'></div>
+      <MyDetail propsState={showDetail} />
     </div>
   );
 }
