@@ -28,7 +28,11 @@ function App() {
         <AboutMeSection />
         <ContactSection />
       </MainContent>
-      <Footer />
+      <Footer>
+        <Footer.FirstContent />
+        <Footer.SecondContent />
+        <Footer.ThirdContent />
+      </Footer>
     </>
   );
 }
